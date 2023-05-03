@@ -1,9 +1,6 @@
 # WE ALREADY HAVE THE LIST OF POTENTIAL DUPLICATES.
 # NO NEED TO ITERATE THROUGH THE _ENTIRE_ ARCHIVE.
 
-# Grab the current folder size
-# $currentSize = Get-ChildItem -Recurse -File | Measure-Object -Property Length -Sum
-
 # Get the entire archive
 # $path = ".\" # or whatever path is of interest. Default is current directory.
 # $ds = Get-ChildItem $path -Recurse -File
@@ -15,7 +12,7 @@
 # $ds = Get-Content -Path $filelist
 
 # Use a pre-defined list in a .txt file
-$filelist = "..\filelist.txt"
+$filelist = ".\filelist.txt"
 $ds = Get-Content -Path $filelist
 # Remove trailing whitespace 
 $ds | Foreach {$_.TrimEnd()} | Set-Content $filelist
@@ -69,9 +66,3 @@ foreach ($items in $cd)
         Write-Host "$item deleted"
     }
 }
-
-# Output the new folder size
-# $newSize = Get-ChildItem -Recurse -File | Measure-Object -Property Length -Sum
-
-# Output the difference
-$currentSize - $newSize
